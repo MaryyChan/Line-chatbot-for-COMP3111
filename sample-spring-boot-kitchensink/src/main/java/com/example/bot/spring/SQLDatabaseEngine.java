@@ -12,6 +12,13 @@ public class SQLDatabaseEngine extends DatabaseEngine {
 	@Override
 	String search(String text) throws Exception {
 		//Write your code here
+		Connection connection = getConnection();
+		PreparedStatement stmt=connection.prepareStatement("select response from lab3 where keywords = ?");
+		stmt.setString(1,text);
+		ResultSet rs = stmt.executeQuery();
+		while(rs.next()) {
+			return rs.getString(1);
+		}
 		return null;
 	}
 	
@@ -31,5 +38,7 @@ public class SQLDatabaseEngine extends DatabaseEngine {
 
 		return connection;
 	}
+	
+
 
 }
