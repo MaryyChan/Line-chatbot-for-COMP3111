@@ -16,12 +16,21 @@ public class SQLDatabaseEngine extends DatabaseEngine {
 		PreparedStatement stmt=connection.prepareStatement("select response from lab3 where keywords = ?");
 		stmt.setString(1,text);
 		ResultSet rs = stmt.executeQuery();
+		String result = null;
 		while(rs.next()) {
-			return rs.getString(1);
+			result = rs.getString(1);
 		}
-		return null;
+		
+		rs.close();
+		stmt.close();
+		connection.close();
+		if(result!=null)
+			return result;
+		
+		throw new Exception ("Not found");
+		
 	}
-	
+	 
 	
 	private Connection getConnection() throws URISyntaxException, SQLException {
 		Connection connection;
