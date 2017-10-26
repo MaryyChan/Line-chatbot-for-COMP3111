@@ -57,6 +57,7 @@ public class Test {
 					for( Observer obs : starbucks.getQueue() ) System.out.println(obs.getID()); 
 					break;
 				case "4":
+					System.out.println(MESSAGE_SELECT_FOUR);
 					break loop;
 				default:
 					System.out.println(MESSAGE_ERROR);

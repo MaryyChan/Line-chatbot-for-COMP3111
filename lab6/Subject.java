@@ -23,7 +23,8 @@ public class Subject {
 	}
 
 	public void notifyObservers() {
-		// TODO: notify every observers
+		for (Observer ob: observers)
+			ob.update();
 	}
 
 	public void setMessage(String msg) {
